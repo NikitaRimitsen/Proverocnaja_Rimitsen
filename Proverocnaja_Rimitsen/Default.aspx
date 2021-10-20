@@ -7,12 +7,12 @@
 <p>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" DataKeyNames="Id" DataSourceID="SqlDataSource1" EmptyDataText="There are no data records to display." ForeColor="Black" Width="417px">
         <Columns>
-            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-            <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" SortExpression="Id" />
+            <asp:CommandField ShowDeleteButton="True" />
+            <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" SortExpression="Id" InsertVisible="False" />
             <asp:BoundField DataField="nimetus" HeaderText="nimetus" SortExpression="nimetus" />
             <asp:BoundField DataField="kogus" HeaderText="kogus" SortExpression="kogus" />
+            <asp:BoundField DataField="nimetus_ladu" HeaderText="nimetus_ladu" SortExpression="nimetus_ladu" />
             <asp:BoundField DataField="toodeTyyp" HeaderText="toodeTyyp" SortExpression="toodeTyyp" />
-            <asp:BoundField DataField="ladu" HeaderText="ladu" SortExpression="ladu" />
         </Columns>
         <FooterStyle BackColor="#CCCCCC" />
         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -24,7 +24,7 @@
         <SortedDescendingCellStyle BackColor="#CAC9C9" />
         <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RimitsenConnectionString1 %>" DeleteCommand="DELETE FROM [toode] WHERE [Id] = @Id" InsertCommand="INSERT INTO [toode] ([nimetus], [kogus], [toodeTyyp], [ladu]) VALUES (@nimetus, @kogus, @toodeTyyp, @ladu)" ProviderName="<%$ ConnectionStrings:RimitsenConnectionString1.ProviderName %>" SelectCommand="SELECT [Id], [nimetus], [kogus], [toodeTyyp], [ladu] FROM [toode]" UpdateCommand="UPDATE [toode] SET [nimetus] = @nimetus, [kogus] = @kogus, [toodeTyyp] = @toodeTyyp, [ladu] = @ladu WHERE [Id] = @Id">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RimitsenConnectionString1 %>" DeleteCommand="DELETE FROM [toode] WHERE [Id] = @Id" InsertCommand="INSERT INTO [toode] ([nimetus], [kogus], [toodeTyyp], [ladu]) VALUES (@nimetus, @kogus, @toodeTyyp, @ladu)" SelectCommand="SELECT toode.Id, toode.nimetus, toode.kogus, ladu.nimetus_ladu, toodeTyyp.toodeTyyp FROM toode INNER JOIN ladu ON toode.ladu = ladu.Id INNER JOIN toodeTyyp ON toode.toodeTyyp = toodeTyyp.Id" UpdateCommand="UPDATE [toode] SET [nimetus] = @nimetus, [kogus] = @kogus, [toodeTyyp] = @toodeTyyp, [ladu] = @ladu WHERE [Id] = @Id">
         <DeleteParameters>
             <asp:Parameter Name="Id" Type="Int32" />
         </DeleteParameters>

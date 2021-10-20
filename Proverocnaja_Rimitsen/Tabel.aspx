@@ -8,7 +8,7 @@
             <Columns>
                 <asp:BoundField DataField="nimetus_ladu" HeaderText="nimetus_ladu" SortExpression="nimetus_ladu" />
                 <asp:BoundField DataField="linn" HeaderText="linn" SortExpression="linn" />
-                <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+                <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" Visible="False" />
             </Columns>
             <FooterStyle BackColor="#CCCCCC" />
             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
